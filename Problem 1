@@ -1,0 +1,216 @@
+// MACHINE PROBLEM 1
+// A program that performs classroom management in the form of
+an electronic class record, which follows given specifications.
+#include<iostream>
+#include<cstring> //for strlen
+#include<iomanip> // for setw in first and last names
+using namespace std;
+int main()
+{
+ char first_name[50], last_name[50]; //for student name only
+ int i, j, k, l, m; //for counter
+ double experiment[50], skills_test[50],
+machine_problem[50], finals[50], prelims[50], raw_grade[50]={0};
+//double for decimal places
+ double ave_exp=0, ave_skills=0, ave_machine=0,
+ave_prelims=0, ave_finals=0, temp=0; //for the computations
+equating to zero so there would no below zero value
+ for(i=1; i<=50; i++) //for 50 students
+ {
+ cout<<endl<<"Student "<<i<<" First Name: ";
+ cin>>setw(50)>>first_name; //setw for long names
+
+ cout<<"Student "<<i<<" Last Name: ";
+ cin>>setw(50)>>last_name; //setw for long names
+
+ for(j=1; j<=9; j++) //for 9 experiments
+ {
+ cout<<"Experiment "<<j<<": ";
+ cin>>experiment[j];
+
+ //wont affect that compuations
+ if(experiment[j] >=0 && experiment[j]<=100 ) //if
+score is less than 0 or greater 100
+ {
+ ave_exp = (ave_exp + experiment[j]/900*100*.
+10); //computation for experiments equivalent percetage
+}
+ else
+ {
+ cout<<"INVALID SCORE!"<<endl; //just a
+reminder
+
+ }
+
+ }
+
+ for(k=1; k<=9; k++) //for skills test
+ {
+ cout<<"Skill Test "<<k<<": ";
+ cin>>skills_test[k];
+
+ //wont affect that compuations
+ if(skills_test[k] >=0 && skills_test[k]<=100 ) //
+if score is less than 0 or greater 100
+ {
+ ave_skills = (ave_skills + skills_test[k]/
+900*100*.20); //computation for skills test equivalent percetage
+ }
+ else
+ {
+ cout<<"INVALID SCORE!"<<endl; //just a
+reminder
+
+ }
+ }
+
+ for(l=1; l<=2; l++) //for machine problems
+ {
+ cout<<"Machine Problem "<<l<<": ";
+ cin>>machine_problem[l];
+
+ //wont affect that compuations
+ if(machine_problem[l] >=0 &&
+machine_problem[l]<=100 ) //if score is less than 0 or greater
+100
+ {
+ ave_machine = (ave_machine +
+machine_problem[l]/200*100*.20); //computation for machine
+problems equivalent percetage
+ }
+ else
+ {
+ cout<<"INVALID SCORE!"<<endl; // serves as a
+reminder or warning
+
+ }
+ }
+
+ cout<<"Preliminary Examinations: "; // for loop is not
+needed here for there is only 1 prelim exam
+ cin>>prelims[i];
+
+ //wont affect that compuations
+ if(prelims[i] >=0 && prelims[i]<=100 ) //if score is
+less than 0 or greater 100
+ {
+ ave_prelims =prelims[i]*.20; //computation for
+prelims equivalent percetage
+ }
+ else
+ {
+ cout<<"INVALID SCORE!"<<endl; /// serves as a
+reminder or warning
+ }
+
+ cout<<"Major Examinations: "; //for is not needed here
+for there is only 1 final exam
+ cin>>finals[i];
+
+ //wont affect that compuations
+ if(finals[i] >=0 && finals[i]<=100 ) //if score is
+less than 0 or greater 100
+ {
+ ave_finals = finals[i]*.30; //computation for
+finals equivalent percetage
+ }
+ else
+ {
+ cout<<"INVALID SCORE!"<<endl; // serves as a
+reminder or warning
+ }
+
+ //displaying all the grades of a certainstudent
+ cout<<endl<<"Student Name: "<<first_name<<"
+"<<last_name;
+ cout<<endl<<"Experiement: "<<ave_exp;
+ cout<<endl<<"Skills Test: "<<ave_skills;
+ cout<<endl<<"Machine Problems: "<<ave_machine;
+ 
+ cout<<endl<<"Preliminary Examinations: "<<ave_prelims;
+ cout<<endl<<"Major Examinations: "<<ave_finals;
+
+ raw_grade [i]= ave_exp + ave_skills + ave_machine +
+ave_prelims + ave_finals; //sum of all the computations
+ cout<<endl<<endl<<"RAW GRADE: "<<raw_grade[i];
+
+ //for transmutation of raw grade
+ if(raw_grade[i]>=95.57 && raw_grade[i]<=100)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 1.00";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=91.12 && raw_grade[i]<=95.56)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 1.25";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=86.68 && raw_grade[i]<=91.11)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 1.50";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=82.23 && raw_grade[i]<=86.67)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 1.75";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=77.79 && raw_grade[i]<=82.22)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 2.00";
+ cout<<endl<<"STATUS: PASSED!"<<endl<<endl;
+ }
+ else if(raw_grade[i]>=73.34 && raw_grade[i]<=77.78)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 2.25";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=68.90 && raw_grade[i]<=73.33)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 2.50";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=64.45 && raw_grade[i]<=68.89)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 2.75";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else if(raw_grade[i]>=60.00 && raw_grade[i]<=64.44)
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 2.00";
+ cout<<endl<<"STATUS: PASSED!"<<endl;
+ }
+ else
+ {
+ cout<<endl<<"FINAL GRADE TRANSMUTATION: 5.00";
+ cout<<endl<<"STATUS: FAILED! :((((( "<<endl;
+ }
+
+
+ cout<<"____________________________________"<<endl; //
+basis for another student
+
+ }
+ cout<<endl;
+ for(i=1; i<=12; i++)
+ {
+ for(m=i + 1; m<=12; m++)
+ {
+ if(raw_grade[i] <raw_grade[m] )
+ {
+ temp = raw_grade[i];
+ raw_grade[i] = raw_grade[m];
+ raw_grade[m] = temp;
+ }
+ }
+ }
+ cout<<endl<<"____________________________________";
+ cout<<endl<<" THE TOP 10 STUDENTS ARE: "<<endl; //
+displaying the top 10
+ for(i=1; i<=10; i++)
+ {
+ cout<<"\t"<<i<<" "<<raw_grade[i]<<endl;
+ }
+ return 0;
+
+}
