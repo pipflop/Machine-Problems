@@ -1,85 +1,79 @@
-// A program that computes certain values based on the given sides of the triangle, letting the
-measurements of the sides be a user-input.
-#include<iostream>
-#include<cmath> // needed for mathematical equations and computations
-using namespace std;
-int main()
-{
- // declaring variables
- double a, b, c, s, area=0, peri=0, interior_a=0, interior_b=0, interior_c=0, apo=0; // double for
-decimal places
- double square_ab=0, square_c=0, circum=0;
+#include<iostream> 
+#include<conio.h> //for _getch
+#include<cmath> //for computations
+using namespace std; 
+int main() 
+{ 
+	//declaring variables 
+	double a, b, c, s, area=0, peri=0, interior_a=0, interior_b=0, interior_c=0, apo=0; //double for decimal places
+	double square_ab=0, square_c=0, circum=0;
+	
+	//inputing the sides 
+	cout<<"Length of Side A: "; 
+	cin>>a; 
+	cout<<"Length of Side B: "; 
+	cin>>b; 
+	cout<<"Length of Side C: "; 
+	cin>>c; 
+	
+	cout<<endl<<"_______________________________________________________"<<endl; //mema
+	
+	//dsiplaying the values
+	cout<<"Side A: "<<a<<endl;
+	cout<<"Side B: "<<b<<endl;
+	cout<<"Side C: "<<c<<endl;
+	
+	interior_a = acos(((b*b)+(c*c)-(a*a))/(2*b*c));  // formula for interior angle between a to b
+	cout<<"Interior angle between side A and B: "<<interior_a * 57.2958<<" degrees"<<endl; 	// answer is in rad to convert it to degrees multiply by 57.2958 
+		
+	interior_b = acos(((a*a)+(c*c)-(b*b))/(2*a*c)); // formula for interior angle between b to c
+	cout<<"Interior angle between side B and C: "<<interior_b * 57.2958<<" degrees"<<endl; 	//answer is in rad to convert it to degrees multiply by 57.2958 
+		
+	interior_c = acos(((a*a)+(b*b)-(c*c))/(2*a*b)); // formula for interior angle between c to a
+	cout<<"Interior angle between side C and A: "<<interior_c * 57.2958<<" degrees"<<endl; 	//answer is in rad to convert it to degrees multiply by 57.2958 
+		
+	
+	//Equilateral, Isosceles, Obtuse
+	if (a == b && b == c && c == a) 
+		cout<<"Kind of Triangle: EQUILATERAL"<<endl; 
+		
+	else if (a == b || b == c || c == a) 
+		cout<<"Kind of Triangle: ISOSCELES"<<endl;
+		
+	else 
+		cout<<"Kind of Triangle: SCALENE"<<endl; 
+	
 
- // inputing the sides
- cout << "Length of Side A: ";
- cin >> a;
- cout << "Length of Side B: ";
- cin >> b;
- cout<<"Length of Side C: ";
- cin >> c;
+	peri = a + b + c; //computing the perimeter
+	cout<<"PERIMETER OF TRIANGLE ABC: "<<peri<<endl; 
+	
+	s = (a + b + c)/2;
+	area = sqrt(s*((s-a)*(s-b)*(s-c)));  //computing the perimeter and area 
+	cout<<"AREA OF TRIANGLE ABC: "<<area<<endl;
 
- cout << endl << "_____________________________________________________" << endl;
-// for a line break
-
- // dsiplaying the values
- cout << "Side A: " << a << endl;
- cout << "Side B: " << b << endl;
- cout << "Side C: " << c << endl;
-
- interior_a = acos(((b*b)+(c*c)-(a*a))/(2*b*c)); // formula for interior angle between a to b
- cout << "Interior angle between side A and B: " << interior_a * 57.2958 << " degrees" <<
-endl; // answer is in rad to convert it to degrees multiply by 57.2958
- interior_b = acos(((a*a)+(c*c)-(b*b))/(2*a*c)); // formula for interior angle between b to c
- cout << "Interior angle between side B and C: " << interior_b * 57.2958 << " degrees" <<
-endl; //answer is in rad to convert it to degrees multiply by 57.2958
-
- interior_c = acos(((a*a)+(b*b)-(c*c))/(2*a*b)); // formula for interior angle between c to a
- cout << "Interior angle between side C and A: " << interior_c * 57.2958 << " degrees" <<
-endl; // answer is in rad to convert it to degrees multiply by 57.2958
-
-
- // for Equilateral, Isosceles, or Obtuse
- if (a == b && b == c && c == a)
- cout << "Kind of Triangle: EQUILATERAL" << endl;
-
- else if (a == b || b == c || c == a)
- cout << "Kind of Triangle: ISOSCELES" << endl;
-
- else
- cout << "Kind of Triangle: SCALENE" << endl;
-
-
- peri = a + b + c; // computing the perimeter
- cout << "PERIMETER OF TRIANGLE ABC: " << peri << endl;
-
- s = (a + b + c)/2;
- area = sqrt(s*((s-a)*(s-b)*(s-c))); // computing the perimeter and area
- cout << "AREA OF TRIANGLE ABC: " << area << endl;
-
-
- // for the identification of Acute, Obtuse, Right
- square_ab = (interior_a * interior_a) + (interior_b * interior_b);
- square_c = interior_c * interior_c;
-
- if (square_ab > square_c)
- cout << "This is an Acute triangle" << endl;
- else if ((square_ab = square_c))
- cout << "This is a Right triangle" << endl;
-  else
- cout << "This is an Obtuse triangle" << endl;
-
-
- apo = a/(2*tan(3.14159/3)); // computation for the length of apothem
- cout << "APOTHEM LENGTH: " << apo << endl;
-
- circum = (a + b + c)/ sqrt((peri) * (a + b - c) * (c + a - b) * (a + b - c) ); // computation for
-circumcenter
- cout << "CIRCUMCENTER: " << circum;
-
-
- cout << endl << "_____________________________________________________" << endl;
-// for a line break
-
- return 0;
-
-}
+	
+	//for the identification of Acute, Obtuse, Right
+	square_ab = (interior_a * interior_a) + (interior_b * interior_b);
+	square_c = interior_c * interior_c;
+	
+	if (square_ab > square_c) 
+		cout<<"This is an Acute triangle"<<endl; 
+	else if (square_ab = square_c) 
+		cout<<"This is a Right triangle"<<endl; 
+	else 
+		cout<<"This is an Obtuse triangle"<<endl; 
+	
+	
+	apo = a/(2*tan(3.14159/3)); //computation for the length of apothem 
+	cout<<"APOTHEM LENGTH: "<<apo<<endl; 
+	
+	circum = (a + b + c)/ sqrt((peri) * (a + b - c) * (c + a - b) * (a + b - c) );// computation for circumcenter
+	cout<<"CIRCUMCENTER: "<<circum;
+	
+	
+	cout<<endl<<"_______________________________________________________"<<endl; //mema
+	
+	return 0; 
+	
+	
+	}
